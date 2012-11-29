@@ -27,13 +27,18 @@
 #pragma mark Init Methods
 
 - (id)init{
+    // For backwards compatibility, default to the photo library if no source type is provided
+    return [self initWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+}
+
+- (id)initWithSourceType:(UIImagePickerControllerSourceType)sourceType{
     if (self = [super init]) {
         
         self.cropSize = CGSizeMake(320, 320);
         
         _imagePickerController = [[UIImagePickerController alloc] init];
         _imagePickerController.delegate = self;
-        _imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        _imagePickerController.sourceType = sourceType;
         
     }
     return self;
