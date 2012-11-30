@@ -99,6 +99,7 @@
         self.backgroundColor = [UIColor blackColor];
         
         self.scrollView = [[ScrollView alloc] initWithFrame:self.bounds];
+        self.scrollView.opaque = NO;
         self.scrollView.showsHorizontalScrollIndicator = NO;
         self.scrollView.showsVerticalScrollIndicator = NO;
         self.scrollView.delegate = self;
