@@ -12,6 +12,9 @@
 // from http://stackoverflow.com/questions/7848766
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
+// The height for the toolbar displayed at the bottom
+#define TOOLBAR_HEIGHT 54.f
+
 @interface GKImageCropViewController ()
 
 @property (nonatomic, strong) GKImageCropView *imageCropView;
@@ -121,13 +124,13 @@
         123./255., 125/255., 132./255., 1.
     };
 
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(320, 54), YES, 0.0);
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(320, TOOLBAR_HEIGHT), YES, 0.0);
 
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGGradientRef gradient = CGGradientCreateWithColorComponents(colorSpace, components, NULL, 2);
 
-    CGContextDrawLinearGradient(ctx, gradient, CGPointMake(0, 0), CGPointMake(0, 54), kCGImageAlphaNoneSkipFirst);
+    CGContextDrawLinearGradient(ctx, gradient, CGPointMake(0, 0), CGPointMake(0, TOOLBAR_HEIGHT), kCGImageAlphaNoneSkipFirst);
 
     UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
@@ -202,9 +205,11 @@
 
 - (void)viewWillLayoutSubviews{
     [super viewWillLayoutSubviews];
-    
-    self.imageCropView.frame = self.view.bounds;
-    self.toolbar.frame = CGRectMake(0, CGRectGetHeight(self.view.frame) - 54, 320, 54);
+
+    CGRect cropViewFrame = self.view.bounds;
+    cropViewFrame.size.height -= TOOLBAR_HEIGHT;
+    self.imageCropView.frame = cropViewFrame;
+    self.toolbar.frame = CGRectMake(0, CGRectGetHeight(self.view.frame) - TOOLBAR_HEIGHT, 320, TOOLBAR_HEIGHT);
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
