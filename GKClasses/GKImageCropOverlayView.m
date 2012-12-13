@@ -45,19 +45,19 @@
     
     CGFloat heightSpan = floor(height / 2 - self.cropSize.height / 2);
     CGFloat widthSpan = floor(width / 2 - self.cropSize.width  / 2);
-    
-    //fill outer rect
+
+    //fill background rect
     [[UIColor colorWithRed:0. green:0. blue:0. alpha:0.5] set];
     UIRectFill(self.bounds);
     
-    //fill inner border
+    //fill main rect border
     [[UIColor colorWithRed:1. green:1. blue:1. alpha:0.5] set];
-    UIRectFrame(CGRectMake(widthSpan - 2, heightSpan - 2, self.cropSize.width + 4, self.cropSize.height + 4));
-    
-    //fill inner rect
+    UIRectFrame(CGRectMake(widthSpan, heightSpan, self.cropSize.width, self.cropSize.height));
+
+    //clear inner rect
     [[UIColor clearColor] set];
-    UIRectFill(CGRectMake(widthSpan, heightSpan, self.cropSize.width, self.cropSize.height));
-    
+    UIRectFill(CGRectMake(widthSpan + 1, heightSpan + 1, self.cropSize.width - 2, self.cropSize.height - 2));
+
     
     
     if (heightSpan > 30 && (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)) {
