@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+#import "GKScaleMode.h"
+
 @protocol GKImageCropControllerDelegate;
 
 @interface GKImageCropViewController : UIViewController{
     UIImage *_croppedImage;
 }
+
+- (id)initWithScaleMode:(GKScaleMode)scaleMode;
 
 @property (nonatomic, strong) UIImage *sourceImage;
 @property (nonatomic, assign) CGSize cropSize; //size of the crop rect, default is 320x320

@@ -7,6 +7,7 @@
 //
 
 #import "GKImagePicker.h"
+
 #import "GKImageCropViewController.h"
 
 @interface GKImagePicker ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate, GKImageCropControllerDelegate>
@@ -14,7 +15,10 @@
 - (void)_hideController;
 @end
 
-@implementation GKImagePicker
+@implementation GKImagePicker{
+    /** The scale mode for the image when cropping it. */
+    GKScaleMode _scaleMode;
+}
 
 #pragma mark -
 #pragma mark Getter/Setter
@@ -27,14 +31,16 @@
 #pragma mark Init Methods
 
 - (id)init{
-    // For backwards compatibility, default to the photo library if no source type is provided
-    return [self initWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    // For backwards compatibility, default to the photo library and aspect fit
+    return [self initWithSourceType:UIImagePickerControllerSourceTypePhotoLibrary scaleMode:GKScaleModeAspectFit];
 }
 
-- (id)initWithSourceType:(UIImagePickerControllerSourceType)sourceType{
+- (id)initWithSourceType:(UIImagePickerControllerSourceType)sourceType scaleMode:(GKScaleMode)scaleMode{
     if (self = [super init]) {
         
         self.cropSize = CGSizeMake(320, 320);
+
+        _scaleMode = scaleMode;
         
         _imagePickerController = [[UIImagePickerController alloc] init];
         _imagePickerController.delegate = self;
@@ -76,7 +82,7 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo{
 
-    GKImageCropViewController *cropController = [[GKImageCropViewController alloc] init];
+    GKImageCropViewController *cropController = [[GKImageCropViewController alloc] initWithScaleMode:_scaleMode];
     cropController.contentSizeForViewInPopover = picker.contentSizeForViewInPopover;
     cropController.sourceImage = image;
     cropController.cropSize = self.cropSize;

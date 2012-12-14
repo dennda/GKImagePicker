@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "GKScaleMode.h"
+
 @interface GKImageCropView : UIView
+
+- (id)initWithFrame:(CGRect)frame scaleMode:(GKScaleMode)scaleMode;
 
 @property (nonatomic, strong) UIImage *imageToCrop;
 @property (nonatomic, assign) CGSize cropSize;

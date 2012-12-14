@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+#import "GKScaleMode.h"
+
+
 @protocol GKImagePickerDelegate;
 
 @interface GKImagePicker : NSObject
 
-- (id)initWithSourceType:(UIImagePickerControllerSourceType)sourceType;
+- (id)initWithSourceType:(UIImagePickerControllerSourceType)sourceType scaleMode:(GKScaleMode)scaleMode;
 
 @property (nonatomic, weak) id<GKImagePickerDelegate> delegate;
 @property (nonatomic, assign) CGSize cropSize; //default value is 320x320 (which is exactly the same as the normal imagepicker uses)

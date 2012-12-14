@@ -32,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01C612CA167B5A5C000AAF45 /* GKScaleMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GKScaleMode.h; path = GKClasses/GKScaleMode.h; sourceTree = SOURCE_ROOT; };
 		C1C7B65E1598429E007B2669 /* GKImagePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GKImagePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C7B6621598429E007B2669 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C1C7B6641598429E007B2669 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -145,6 +146,7 @@
 				C1C7B6CC159842F9007B2669 /* GKImageCropView.m */,
 				C1C7B6CD159842F9007B2669 /* GKImageCropOverlayView.h */,
 				C1C7B6CE159842F9007B2669 /* GKImageCropOverlayView.m */,
+				01C612CA167B5A5C000AAF45 /* GKScaleMode.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -367,6 +369,7 @@
 				C1C7B6811598429E007B2669 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

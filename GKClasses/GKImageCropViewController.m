@@ -29,7 +29,10 @@
 
 @end
 
-@implementation GKImageCropViewController
+@implementation GKImageCropViewController {
+    /** The scale mode for the image when cropping it. */
+    GKScaleMode _scaleMode;
+}
 
 #pragma mark -
 #pragma mark Getter/Setter
@@ -69,7 +72,7 @@
 
 - (void)_setupCropView{
     
-    self.imageCropView = [[GKImageCropView alloc] initWithFrame:self.view.bounds];
+    self.imageCropView = [[GKImageCropView alloc] initWithFrame:self.view.bounds scaleMode:_scaleMode];
     [self.imageCropView setImageToCrop:sourceImage];
     [self.imageCropView setCropSize:cropSize];
     
@@ -175,10 +178,10 @@
 #pragma mark -
 #pragma Super Class Methods
 
-- (id)init{
+- (id)initWithScaleMode:(GKScaleMode)scaleMode{
     self = [super init];
     if (self) {
-        // Custom initialization
+        _scaleMode = scaleMode;
     }
     return self;
 }
