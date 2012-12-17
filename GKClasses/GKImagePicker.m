@@ -87,8 +87,10 @@
     cropController.sourceImage = image;
     cropController.cropSize = self.cropSize;
     cropController.delegate = self;
+    // Show the status bar again, or it won't come back if the picker gets dismissed
+    // XXX This is a somewhat ugly workaround
+    [[UIApplication sharedApplication] setStatusBarHidden: NO];
     [picker pushViewController:cropController animated:YES];
-    
 }
 
 #pragma mark -
